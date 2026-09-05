@@ -1,0 +1,44 @@
+{
+  "schedules": [
+    {
+      "id": "0640f4f9-fe61-454d-b50d-8c6d4e2f21ed",
+      "name": "Public Health Record Silver Load",
+      "description": null,
+      "notebook_id": "b6db41ac-99dd-4793-9813-03d6e2decbe2",
+      "cron_expression": null,
+      "timezone": "UTC",
+      "is_active": true,
+      "overlap_policy": "queue",
+      "params": {},
+      "max_retries": 0,
+      "retry_delay_seconds": 60,
+      "retry_backoff": false,
+      "notify_on_failure": false,
+      "notify_on_success": false,
+      "notify_email": null,
+      "notify_webhook_url": null,
+      "max_run_timeout_seconds": null
+    },
+    {
+      "id": "8fb1e6e9-723f-416e-94c6-fe222546ae0d",
+      "name": "Public Health Record Daily Bronze Schedule",
+      "description": null,
+      "notebook_id": "867447f6-3a3a-48a7-8b07-2136bf650fce",
+      "cron_expression": "0 */2 * * *",
+      "timezone": "Asia/Singapore",
+      "is_active": true,
+      "overlap_policy": "skip",
+      "params": {
+        "MAX_ROWS": 2000
+      },
+      "max_retries": 0,
+      "retry_delay_seconds": 60,
+      "retry_backoff": false,
+      "notify_on_failure": false,
+      "notify_on_success": false,
+      "notify_email": null,
+      "notify_webhook_url": null,
+      "max_run_timeout_seconds": null
+    }
+  ]
+}

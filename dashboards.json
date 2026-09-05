@@ -1,0 +1,475 @@
+{
+  "dashboards": [
+    {
+      "id": "847f94f6-2d7c-4b60-9406-9cc82014cd69",
+      "name": "Weather Dashboard",
+      "description": null,
+      "location_var": "Singapore",
+      "layout": [
+        {
+          "h": 1,
+          "i": "fe3c7adc-c2ef-442e-9343-10b3b6d51046",
+          "w": 12,
+          "x": 0,
+          "y": 16,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 5,
+          "i": "2b45fbf5-9447-4772-bf13-944f010479c1",
+          "w": 6,
+          "x": 6,
+          "y": 11,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 5,
+          "i": "f32a649a-ad4a-4256-8f48-e00a6a2b2bb2",
+          "w": 6,
+          "x": 0,
+          "y": 17,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 5,
+          "i": "df0c13fc-2670-4155-8291-911d2d2e2998",
+          "w": 6,
+          "x": 6,
+          "y": 17,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 1,
+          "i": "e67e79cf-3a4c-4ce9-8dc0-a6a772968494",
+          "w": 12,
+          "x": 0,
+          "y": 5,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 1,
+          "i": "e3c1bdb5-0377-4b53-900f-533b81ecd7b4",
+          "w": 12,
+          "x": 0,
+          "y": 27,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 3,
+          "i": "839396d6-c179-4b86-acec-563d3fbe1897",
+          "w": 3,
+          "x": 0,
+          "y": 2,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 2,
+          "i": "29ee826c-0e30-4358-aa3a-c4b234760402",
+          "w": 12,
+          "x": 0,
+          "y": 0,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 5,
+          "i": "3a8b30e6-bb45-4471-972a-c41b1c4e5ad2",
+          "w": 6,
+          "x": 0,
+          "y": 22,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 5,
+          "i": "ab9784d1-64e9-4fbb-84e5-59356b23faf5",
+          "w": 6,
+          "x": 6,
+          "y": 6,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 3,
+          "i": "cd337944-7d5e-4314-b76f-152e0f1e0c2b",
+          "w": 4,
+          "x": 3,
+          "y": 2,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 5,
+          "i": "ec1e7698-8501-4286-a37c-5488619d99f8",
+          "w": 6,
+          "x": 0,
+          "y": 11,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 5,
+          "i": "c889509d-dc12-4def-9028-9efd99fe0481",
+          "w": 6,
+          "x": 6,
+          "y": 22,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 5,
+          "i": "8c6906f4-21e7-4c03-9e34-39830ea4b54d",
+          "w": 6,
+          "x": 0,
+          "y": 6,
+          "moved": false,
+          "static": false
+        }
+      ],
+      "filters": null,
+      "is_published": true,
+      "widgets": [
+        {
+          "id": "fe3c7adc-c2ef-442e-9343-10b3b6d51046",
+          "title": "Divider",
+          "chart_type": "divider",
+          "sql_query": "",
+          "connection_id": null,
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {},
+          "visible_to_roles": null
+        },
+        {
+          "id": "2b45fbf5-9447-4772-bf13-944f010479c1",
+          "title": "Extreme Weather Alerts",
+          "chart_type": "table",
+          "sql_query": "SELECT\n    state_name,\n    city_name,\n    forecast_time,\n    temperature_2m,\n    precipitation,\n    wind_speed\nFROM weather.bronze.bronze_weather_hourly\nWHERE\n    temperature_2m > 40\n    OR precipitation > 20\n    OR wind_speed > 35\nORDER BY forecast_time;",
+          "connection_id": "f9400931-7519-4e17-9a25-addeb6b8a85f",
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {},
+          "visible_to_roles": null
+        },
+        {
+          "id": "f32a649a-ad4a-4256-8f48-e00a6a2b2bb2",
+          "title": "Wind Speed Forecast Trend",
+          "chart_type": "area",
+          "sql_query": "SELECT\n    forecast_time,\n    AVG(wind_speed) AS avg_wind_speed\nFROM weather.bronze.bronze_weather_hourly\nGROUP BY forecast_time\nORDER BY forecast_time;",
+          "connection_id": "f9400931-7519-4e17-9a25-addeb6b8a85f",
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {},
+          "visible_to_roles": null
+        },
+        {
+          "id": "df0c13fc-2670-4155-8291-911d2d2e2998",
+          "title": "Hottest States",
+          "chart_type": "bar",
+          "sql_query": "SELECT\n    state_name,\n    MAX(temperature_2m) AS max_temperature\nFROM weather.bronze.bronze_weather_hourly\nGROUP BY state_name\nORDER BY max_temperature DESC\nLIMIT 10;",
+          "connection_id": "f9400931-7519-4e17-9a25-addeb6b8a85f",
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {},
+          "visible_to_roles": null
+        },
+        {
+          "id": "e67e79cf-3a4c-4ce9-8dc0-a6a772968494",
+          "title": "Divider",
+          "chart_type": "divider",
+          "sql_query": "",
+          "connection_id": null,
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {
+            "style": "line",
+            "boxColor": "#17437d"
+          },
+          "visible_to_roles": null
+        },
+        {
+          "id": "e3c1bdb5-0377-4b53-900f-533b81ecd7b4",
+          "title": "Box",
+          "chart_type": "box",
+          "sql_query": "",
+          "connection_id": null,
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {},
+          "visible_to_roles": null
+        },
+        {
+          "id": "839396d6-c179-4b86-acec-563d3fbe1897",
+          "title": "Average Humidity",
+          "chart_type": "metric",
+          "sql_query": "SELECT\n    ROUND(AVG(humidity), 2) AS avg_humidity\nFROM weather.bronze.bronze_weather_hourly;",
+          "connection_id": "f9400931-7519-4e17-9a25-addeb6b8a85f",
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {
+            "thresholds": [
+              {
+                "op": "gt",
+                "color": "red",
+                "value": 60
+              },
+              {
+                "op": "lt",
+                "color": "green",
+                "value": 60
+              }
+            ]
+          },
+          "visible_to_roles": null
+        },
+        {
+          "id": "29ee826c-0e30-4358-aa3a-c4b234760402",
+          "title": "Average Weather {{avg_humidity}}",
+          "chart_type": "header",
+          "sql_query": "",
+          "connection_id": null,
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {
+            "size": "xl",
+            "align": "center",
+            "valign": "middle",
+            "bgColor": "#ecfdf5",
+            "live_sql": "SELECT\n    ROUND(AVG(humidity), 2) AS avg_humidity\nFROM weather.bronze.bronze_weather_hourly;",
+            "live_connection_id": "f9400931-7519-4e17-9a25-addeb6b8a85f"
+          },
+          "visible_to_roles": null
+        },
+        {
+          "id": "3a8b30e6-bb45-4471-972a-c41b1c4e5ad2",
+          "title": "Weather Risk Summary",
+          "chart_type": "pie",
+          "sql_query": "SELECT\n    risk_level,\n    COUNT(*) AS total\nFROM weather.gold.gold_weather_summary\nGROUP BY risk_level;",
+          "connection_id": "f9400931-7519-4e17-9a25-addeb6b8a85f",
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {},
+          "visible_to_roles": null
+        },
+        {
+          "id": "ab9784d1-64e9-4fbb-84e5-59356b23faf5",
+          "title": "State-wise Current Temperature",
+          "chart_type": "bar",
+          "sql_query": "SELECT\n    state_name,\n    ROUND(AVG(temperature_2m), 2) AS avg_temperature\nFROM weather.bronze.bronze_weather_hourly\nWHERE forecast_time >= current_timestamp\nGROUP BY state_name\nORDER BY avg_temperature DESC;",
+          "connection_id": "f9400931-7519-4e17-9a25-addeb6b8a85f",
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {},
+          "visible_to_roles": null
+        },
+        {
+          "id": "cd337944-7d5e-4314-b76f-152e0f1e0c2b",
+          "title": "Data Freshness Widget",
+          "chart_type": "metric",
+          "sql_query": "SELECT\n    strftime(MAX(ingestion_time), '%d/%m/%Y %H:%M:%S') AS latest_ingestion\nFROM weather.bronze.bronze_weather_hourly;",
+          "connection_id": "f9400931-7519-4e17-9a25-addeb6b8a85f",
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {
+            "color": "green",
+            "format": "datetime",
+            "bgColor": "#fff1f2"
+          },
+          "visible_to_roles": null
+        },
+        {
+          "id": "ec1e7698-8501-4286-a37c-5488619d99f8",
+          "title": "Rainfall Forecast Distribution",
+          "chart_type": "pie",
+          "sql_query": "SELECT\n    state_name,\n    SUM(precipitation) AS total_rainfall\nFROM weather.bronze.bronze_weather_hourly\nGROUP BY state_name\nORDER BY total_rainfall DESC;",
+          "connection_id": "f9400931-7519-4e17-9a25-addeb6b8a85f",
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {},
+          "visible_to_roles": null
+        },
+        {
+          "id": "c889509d-dc12-4def-9028-9efd99fe0481",
+          "title": "Forecast Timeline",
+          "chart_type": "line",
+          "sql_query": "SELECT\n    forecast_time,\n    temperature_2m\nFROM weather.bronze.bronze_weather_hourly\nWHERE state_name = 'Maharashtra'\nORDER BY forecast_time;",
+          "connection_id": "f9400931-7519-4e17-9a25-addeb6b8a85f",
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {},
+          "visible_to_roles": null
+        },
+        {
+          "id": "8c6906f4-21e7-4c03-9e34-39830ea4b54d",
+          "title": "Daily Temperature Trend",
+          "chart_type": "line",
+          "sql_query": "SELECT\n    CAST(forecast_time AS DATE) AS forecast_date,\n    AVG(temperature_2m) AS avg_temperature\nFROM weather.bronze.bronze_weather_hourly\nGROUP BY CAST(forecast_time AS DATE)\nORDER BY forecast_date;",
+          "connection_id": "f9400931-7519-4e17-9a25-addeb6b8a85f",
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {},
+          "visible_to_roles": null
+        }
+      ]
+    },
+    {
+      "id": "229e1bd1-11cd-42e6-a827-40674153ca79",
+      "name": "Health Data Pipeline Operations",
+      "description": null,
+      "location_var": null,
+      "layout": [
+        {
+          "h": 5,
+          "i": "e6bd6ae7-5341-4e38-b875-7c9f3acc17d1",
+          "w": 6,
+          "x": 0,
+          "y": 5,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 3,
+          "i": "306265f6-19c5-4ed2-addd-31d303766ba5",
+          "w": 6,
+          "x": 6,
+          "y": 3,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 5,
+          "i": "846925f4-c2ac-497e-af09-4e1df4d7b46e",
+          "w": 6,
+          "x": 0,
+          "y": 0,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 3,
+          "i": "24de5237-0d63-4901-8321-557d96a8c8d1",
+          "w": 6,
+          "x": 6,
+          "y": 0,
+          "moved": false,
+          "static": false
+        },
+        {
+          "h": 5,
+          "i": "f6c11f05-691f-4801-9546-cbb43151de43",
+          "w": 6,
+          "x": 6,
+          "y": 6,
+          "moved": false,
+          "static": false
+        }
+      ],
+      "filters": null,
+      "is_published": true,
+      "widgets": [
+        {
+          "id": "e6bd6ae7-5341-4e38-b875-7c9f3acc17d1",
+          "title": "Runs Per Day",
+          "chart_type": "bar",
+          "sql_query": "SELECT\n    ingestion_date,\n    COUNT(DISTINCT bronze_run_id) AS total_runs\nFROM public_health.silver.silver_public_health_events\nGROUP BY ingestion_date\nORDER BY ingestion_date DESC",
+          "connection_id": "bf91aeb1-ce3c-4ab7-bf49-43f457cee6ba",
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {},
+          "visible_to_roles": null
+        },
+        {
+          "id": "306265f6-19c5-4ed2-addd-31d303766ba5",
+          "title": "Duplicate Protection Efficiency",
+          "chart_type": "metric",
+          "sql_query": "SELECT\n    COUNT(*) AS total_rows,\n    COUNT(DISTINCT source_record_hash) AS distinct_rows\nFROM public_health.silver.silver_public_health_events",
+          "connection_id": "bf91aeb1-ce3c-4ab7-bf49-43f457cee6ba",
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {},
+          "visible_to_roles": null
+        },
+        {
+          "id": "846925f4-c2ac-497e-af09-4e1df4d7b46e",
+          "title": "Ingestion Trend",
+          "chart_type": "line",
+          "sql_query": "SELECT\n    ingestion_date,\n    COUNT(*) AS rows_loaded\nFROM \"public_health\".\"silver\".\"silver_public_health_events\"\nGROUP BY ingestion_date\nORDER BY ingestion_date",
+          "connection_id": "bf91aeb1-ce3c-4ab7-bf49-43f457cee6ba",
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {},
+          "visible_to_roles": null
+        },
+        {
+          "id": "24de5237-0d63-4901-8321-557d96a8c8d1",
+          "title": "Data Freshness",
+          "chart_type": "metric",
+          "sql_query": "SELECT\n    MAX(ingestion_ts_utc) AS latest_data_received\nFROM public_health.silver.silver_public_health_events",
+          "connection_id": "bf91aeb1-ce3c-4ab7-bf49-43f457cee6ba",
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {
+            "format": "datetime"
+          },
+          "visible_to_roles": null
+        },
+        {
+          "id": "f6c11f05-691f-4801-9546-cbb43151de43",
+          "title": "Top Jurisdictions",
+          "chart_type": "pie",
+          "sql_query": "SELECT\n    jurisdiction,\n    COUNT(*) AS total_records\nFROM public_health.silver.silver_public_health_events\nGROUP BY jurisdiction\nORDER BY total_records DESC\nLIMIT 10",
+          "connection_id": "bf91aeb1-ce3c-4ab7-bf49-43f457cee6ba",
+          "connection_name": null,
+          "refresh_interval_seconds": 0,
+          "position_order": 0,
+          "width_cols": 2,
+          "config": {},
+          "visible_to_roles": null
+        }
+      ]
+    }
+  ]
+}

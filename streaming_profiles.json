@@ -1,0 +1,17 @@
+{
+  "streaming_profiles": [
+    {
+      "id": "830a7982-6f90-43cb-bb71-615bcc6c94b5",
+      "name": "my-kafka",
+      "type": "kafka",
+      "description": "Local Redpanda broker managed by SAMSKARA.",
+      "config": {
+        "bootstrap_servers": "host.docker.internal:19092",
+        "security_protocol": "PLAINTEXT",
+        "_sm_bootstrap_topics": [
+          "samskara-v1-test"
+        ]
+      }
+    }
+  ]
+}
