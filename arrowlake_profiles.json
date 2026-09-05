@@ -1,0 +1,9 @@
+{
+  "arrowlake_profiles": [
+    {
+      "id": "bf91aeb1-ce3c-4ab7-bf49-43f457cee6ba",
+      "name": "public_health",
+      "description": "SAMSKARA-managed lakehouse profile backed by AnyStorage, Iceberg, Polars, and DuckDB query acceleration."
+    }
+  ]
+}
