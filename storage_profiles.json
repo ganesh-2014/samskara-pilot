@@ -1,0 +1,10 @@
+{
+  "storage_profiles": [
+    {
+      "id": "61708c87-10fa-45d0-8530-493ef0b882c9",
+      "name": "arrowlake-S3",
+      "type": "s3",
+      "description": "Local storage profile for development and small team installs."
+    }
+  ]
+}

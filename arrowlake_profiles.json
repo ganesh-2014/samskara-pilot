@@ -3,7 +3,15 @@
     {
       "id": "bf91aeb1-ce3c-4ab7-bf49-43f457cee6ba",
       "name": "public_health",
-      "description": "SAMSKARA-managed lakehouse profile backed by AnyStorage, Iceberg, Polars, and DuckDB query acceleration."
+      "description": "SAMSKARA-managed lakehouse profile backed by AnyStorage, Iceberg, Polars, and DuckDB query acceleration.",
+      "config": {
+        "catalog": "public_health",
+        "catalog_type": "rest",
+        "warehouse_path": "public_health/lakehouse",
+        "namespace_prefix": "org",
+        "polaris_catalog_name": "public_health",
+        "storage_profile": "arrowlake-S3"
+      }
     }
   ]
 }
