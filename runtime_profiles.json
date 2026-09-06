@@ -1,6 +1,29 @@
 {
   "runtime_profiles": [
     {
+      "id": "e9e98ea0-c7f2-4e01-9a2d-4317be46f319",
+      "name": "Docker",
+      "type": "docker",
+      "description": "Runs lightweight Python jobs inside the SAMSKARA backend container.",
+      "config": {
+        "packages": [
+          "pandas",
+          "numpy",
+          "requests"
+        ],
+        "cpu_limit": "2",
+        "environment": {},
+        "memory_limit": "4g",
+        "artifact_mode": "summary",
+        "execution_mode": "container",
+        "working_subdir": "",
+        "cell_timeout_seconds": 606,
+        "artifact_retention_days": 7,
+        "max_artifact_mb_per_cell": 5
+      },
+      "is_default": false
+    },
+    {
       "id": "d000acf0-878e-4593-b846-227a9d11e0ee",
       "name": "Health Profile Docker Runtime",
       "type": "docker",
@@ -19,29 +42,6 @@
         "execution_mode": "container",
         "working_subdir": "",
         "cell_timeout_seconds": 1800,
-        "artifact_retention_days": 7,
-        "max_artifact_mb_per_cell": 5
-      },
-      "is_default": true
-    },
-    {
-      "id": "e9e98ea0-c7f2-4e01-9a2d-4317be46f319",
-      "name": "Docker",
-      "type": "docker",
-      "description": "Runs lightweight Python jobs inside the SAMSKARA backend container.",
-      "config": {
-        "packages": [
-          "pandas",
-          "numpy",
-          "requests"
-        ],
-        "cpu_limit": "2",
-        "environment": {},
-        "memory_limit": "4g",
-        "artifact_mode": "summary",
-        "execution_mode": "container",
-        "working_subdir": "",
-        "cell_timeout_seconds": 606,
         "artifact_retention_days": 7,
         "max_artifact_mb_per_cell": 5
       },
