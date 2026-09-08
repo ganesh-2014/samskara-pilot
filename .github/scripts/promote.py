@@ -106,7 +106,20 @@ def main() -> None:
         url,
         data=body,
         method="POST",
-        headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            # Cloudflare's WAF blocks urllib's default User-Agent outright
+            # (403, "error code: 1010" -- a bot-signature block, not an app-
+            # level error) before the request ever reaches the backend. A
+            # normal browser-looking UA passes straight through -- same
+            # fix already needed once before for migrate_vanna_sql_examples.py.
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+            ),
+        },
     )
     try:
         with urllib.request.urlopen(req, timeout=120) as resp:
