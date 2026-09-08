@@ -1,0 +1,39 @@
+name: SAMSKARA Promotion CD
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Git ref (tag, branch, or SHA) to promote"
+        required: true
+        default: "main"
+
+jobs:
+  promote:
+    name: Promote to SAMSKARA
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout approved ref
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref || github.ref }}
+
+      # github.sha is NOT reliable for the actual checked-out commit when
+      # workflow_dispatch supplies a custom ref -- it stays pinned to
+      # whatever ref the workflow file itself was dispatched from. Resolve
+      # it from the real checkout instead, so source_commit always matches
+      # exactly what got read and sent.
+      - name: Resolve checked-out commit
+        id: resolved
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Promote
+        env:
+          SAMSKARA_BASE_URL: ${{ vars.SAMSKARA_BASE_URL }}
+          SAMSKARA_PROMOTION_TOKEN: ${{ secrets.SAMSKARA_PROMOTION_TOKEN }}
+          SOURCE_REF: ${{ github.event.inputs.ref || github.ref_name }}
+          SOURCE_COMMIT: ${{ steps.resolved.outputs.sha }}
+        run: python3 .github/scripts/promote.py
